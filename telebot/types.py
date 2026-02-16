@@ -13123,6 +13123,14 @@ class UniqueGiftColors(JsonDeserializable):
         self.light_theme_other_colors: List[int] = light_theme_other_colors
         self.dark_theme_main_color: int = dark_theme_main_color
         self.dark_theme_other_colors: List[int] = dark_theme_other_colors
+
+    @classmethod
+    def de_json(cls, json_string):
+        if json_string is None: return None
+        obj = cls.check_json(json_string)
+        return cls(**obj)
+
+
 class DirectMessagesTopic(JsonDeserializable):
     """
     Describes a topic of a direct messages chat.
